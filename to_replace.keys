@@ -1,0 +1,18 @@
+@project@;Zedboard
+@copyright@;Architech
+@version@;1.0.0
+@release@;1.0.0
+@htmlhelp@;zedboard-sdkdoc
+@vendor@;Architech
+@board@;Zedboard
+@meta-layer@;meta-xilinx
+@manifest-repository@;zedboard-manifest
+@machine-name@;zedboard-zynq7
+@board-splashscreen@;zedboard-splashscreen
+@user@;architech
+@user-password@;architech
+@ubuntu-machine-name@;architech
+@vm-ip@;192.168.0.100
+@board-alias@;zedboard
+@ubuntu-version@;Ubuntu 12.04 32bit
+@distro-name@;poky
