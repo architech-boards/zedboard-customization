@@ -13,6 +13,17 @@
 @user-password@;architech
 @ubuntu-machine-name@;architech
 @vm-ip@;192.168.0.100
+@target-ip@;192.168.0.10
 @board-alias@;zedboard
 @ubuntu-version@;Ubuntu 12.04 32bit
 @distro-name@;poky
+@quickstart-image@;core-image-minimal-dev
+@console-device@;ttyACM0
+@target-default-eth-if@;eth0
+@eabi@;gnueabi
+@u-boot-start-addr@;
+@u-boot-end-addr@;
+@unboxing@;
+@quick-lan-connector@;
+@qt-libs-alias@;Zedboard
+@arm-toolchain-directory@;
