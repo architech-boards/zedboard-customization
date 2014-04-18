@@ -1,0 +1,47 @@
+Add the proper BOOT.BIN to _static/
+Add the proper devicetree.dtb to _static/
+Add the proper devicetree.dts to _static/
+Add the proper uEnv.txt to _static/
+
+File board_poweron.rst
+    * it seems ok
+
+File bootloader.rst
+    * it seems ok
+
+File boot.rst
+    * it seems ok
+
+File deploy_rootfs.rst
+    * it seems ok
+
+File hardware.rst
+    * it seems ok
+
+File index_custom.rst
+    * it seems ok
+	
+File kernel.rst
+    * we should place instructions for the device tree as well
+
+File meta_layer.rst
+    * it seems ok
+
+File network.rst
+    * really small
+
+File quick_boot.rst
+    * it seems ok.
+
+File rootfs.rst
+    * really ugly
+
+File serial_console.rst
+    * it seems ok
+
+File unboxing.rst
+    * it seems ok
+
+File video.rst
+    * it is empty, it shuold contain the information provided by Stefano Tabanelli
+

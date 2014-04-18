@@ -4,7 +4,7 @@
 @release@;1.0.0
 @htmlhelp@;zedboard-sdkdoc
 @vendor@;Architech
-@board@;Zedboard
+@board@;ZedBoard
 @meta-layer@;meta-xilinx
 @manifest-repository@;zedboard-manifest
 @machine-name@;zedboard-zynq7
@@ -18,12 +18,15 @@
 @ubuntu-version@;Ubuntu 12.04 32bit
 @distro-name@;poky
 @quickstart-image@;core-image-minimal-dev
-@console-device@;ttyACM0
+@console-device@;/dev/ttyACM0
 @target-default-eth-if@;eth0
 @eabi@;gnueabi
 @u-boot-start-addr@;
 @u-boot-end-addr@;
-@unboxing@;
-@quick-lan-connector@;
+@unboxing@;unboxing
+@quick-lan-connector@;J11
 @qt-libs-alias@;Zedboard
-@arm-toolchain-directory@;
+@arm-toolchain-directory@;armv7a-vfp-neon-poky-linux-gnueabi
+@quickstart-image-extension@;tar.gz
+@quickstart-image-tar-options@;-xzf
+@meta-layer-remote@;git://git.yoctoproject.org
