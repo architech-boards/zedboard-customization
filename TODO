@@ -44,4 +44,5 @@ File unboxing.rst
 
 File video.rst
     * it is empty, it shuold contain the information provided by Stefano Tabanelli
+    * Stefano provided an Analog Devices link (http://wiki.analog.com/resources/tools-software/linux-software/zynq_images) regarding the video. It is better to get from him more information about this topic
 

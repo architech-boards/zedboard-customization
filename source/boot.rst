@@ -59,9 +59,11 @@ For information about those components, please refer to Xilinx's official docume
 
 * `First Stage BootLoader <http://www.wiki.xilinx.com/Build+FSBL>`_.
 
-You should know, however, that you need **Vivado** (a Xilinx tool, see `http://www.xilinx.com/products/design-tools/vivado/ <http://www.xilinx.com/products/design-tools/vivado/>`_) to put those three
-components together to generate the final *boot file*. This SDK relies on a pre-generated
-*BOOT.BIN*, which can be downloaded from here:
+A guide on how to prepare file **BOOT.BIN** is available here:
+
+ `http://www.wiki.xilinx.com/Prepare+boot+image <http://www.wiki.xilinx.com/Prepare+boot+image>`_
+
+This SDK relies on a pre-generated *BOOT.BIN*, which can be downloaded from here:
 
  `Download file BOOT.BIN <_static/BOOT.BIN>`_
 
