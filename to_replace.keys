@@ -1,7 +1,8 @@
 @project@;Zedboard
 @copyright@;Architech
-@version@;1.0.0
-@release@;1.0.0
+@version@;1.5.1
+@release@;A
+@date@;08/08/2014
 @htmlhelp@;zedboard-sdkdoc
 @vendor@;Architech
 @board@;ZedBoard
@@ -30,3 +31,4 @@
 @quickstart-image-extension@;tar.gz
 @quickstart-image-tar-options@;-xzf
 @meta-layer-remote@;git://git.yoctoproject.org
+@add-ons@;
