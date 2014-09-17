@@ -55,7 +55,7 @@ and to compile it:
 
 .. host::
 
- make -j <2 * number of processor's cores> uImage
+ make -j <2 * number of processor's cores> uImage UIMAGE_LOADADDR=0x8000
 
 By the end of the build process you will get **uImage** under *arch/arm/boot*.
 
