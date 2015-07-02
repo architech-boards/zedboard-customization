@@ -1,3 +1,6 @@
+
+.. _bsp_kernel_label:
+
 Linux Kernel
 ============
 
@@ -8,15 +11,13 @@ Get them from *Bitbake* build directory (if you built the kernel with it) or get
 
 .. host::
 
- | /path/to/build/tmp/work/zedboard_zynq7-poky-linux-gnueabi/linux-xlnx/3.8-xilinx+gitf4ff79d44a966ebea6229213816d17eb472b303e-r1/git
-
+ | /path/to/build/tmp/work/zedboard-poky-linux-gnueabi/linux-xlnx/3.17-xilinx+gitAUTOINC+7b042ef9ea-r0
 
 If you are working with the virtual machine, you will find them under directory:
 
 .. host::
 
- | /home/@user@/architech_sdk/architech/@board-alias@/yocto/build/tmp/work/zedboard_zynq7-poky-linux-gnueabi/linux-xlnx/3.8-xilinx+gitf4ff79d44a966ebea6229213816d17eb472b303e-r1/git
-
+ | /home/@user@/architech_sdk/architech/@board-alias@/yocto/build/tmp/work/zedboard-poky-linux-gnueabi/linux-xlnx/3.17-xilinx+gitAUTOINC+7b042ef9ea-r0
 
 We suggest you to **don't work under Bitbake build directory**, you will pay a speed penalty and you could
 have troubles syncronizing the all thing. Just copy them some place else and do what you have to do.
@@ -27,9 +28,9 @@ always get them from the Internet by cloning the proper repository and checking 
 .. host::
 
  | cd ~/Documents
- | git clone git://github.com/Xilinx/linux-xlnx
+ | git clone -b xlnx_3.17 git://github.com/Xilinx/linux-xlnx.git 
  | cd linux-xlnx
- | git checkout f4ff79d44a966ebea6229213816d17eb472b303e
+ | git checkout 7b042ef9ea5cc359a22110c75342f8e28c9cdff1
 
 and by properly patching the sources:
 
@@ -38,29 +39,59 @@ and by properly patching the sources:
  | cd ~/Documents
  | git clone git://git.yoctoproject.org/meta-xilinx.git
  | cd meta-xilinx/
- | git checkout cb7329a596a5ab2d1392c1962f9975eeef8e4576
+ | git checkout 7f759048bb0aeef3c0b3938be81d2bcade7acb7e
  | cd ..
- | patch -p1 -d linux-xlnx/ < meta-xilix/recipes-kernel/linux/linux-xlnx/libtraceevent-Remove-hard-coded-include-to-usr-local.patch
- | cp /home/@user@/architech_sdk/architech/@board-alias@/yocto/meta-xilinx/conf/machine/boards/common/zynq_defconfig_3.8.cfg ~/linux-xlnx/.config
+ | git clone -b dizzy https://github.com/architech-boards/meta-zedboard.git
+ | patch -p1 -d linux-xlnx/ < meta-xilix/recipes-kernel/linux/linux-xlnx/3.17/tty-xuartps-Fix-RX-hang-and-TX-corruption-in-set_termios.patch
+ | patch -p1 -d linux-xlnx/ < meta-zedboard/recipes-kernel/linux/linux-xlnx/3.17/0001-Updated-the-TI-Wilink8-driver-to-R8.5.patch
+ | patch -p1 -d linux-xlnx/ < meta-zedboard/recipes-kernel/linux/linux-xlnx/3.17/0002-Patching-kernel-to-adapt-TI-Wilink8-driver.patch
+ | patch -p1 -d linux-xlnx/ < meta-zedboard/recipes-kernel/linux/linux-xlnx/3.17/0003-Fixed-TI-Wilink8-driver-with-kernel-structure.patch
+ | cp meta-zedboard/recipes-kernel/linux/linux-xlnx/3.17/defconfig linux-xlnx/.config
+
+
+add the copy of devicetree dts:
+
+.. host::
+
+ | cp meta-zedboard/conf/machine/boards/@machine-name@/zedboard.dtsi linux-xlnx/arch/arm/boot/dts
+ | cp meta-zedboard/conf/machine/boards/@machine-name@/zedboard-mmcblk0p2.dts linux-xlnx/arch/arm/boot/dts
+ | cp meta-zedboard/conf/machine/boards/@machine-name@/zedboard-ram.dts linux-xlnx/arch/arm/boot/dts
+
 
 Source the script to load the proper evironment for the cross-toolchain (see :ref:`manual_compilation_label`
 Section) and you are ready to customize the kernel:
 
 .. host::
 
+ | source /home/@user@/architech_sdk/architech/@board-alias@/toolchain/environment-nofs
  | cd ~/Documents/linux-xlnx
+ | make
+
+and compile the rigth device tree depending if you need to work only on the RAM or also with an MMC:
+
+.. host::
+
+ | make zedboard-ram.dtb
+ | or
+ | make zedboard-mmcblk0p2.dtb
+
+you can find the .dtb files in *arch/arm/boot/dts*
+
+.. note::
+
+ | if you need to add some custom properties to the kernel compile with:
  | make menuconfig
 
 and to compile it:
 
 .. host::
 
- make -j <2 * number of processor's cores> uImage UIMAGE_LOADADDR=0x8000
+ | make -j <2 * number of processor's cores> uImage UIMAGE_LOADADDR=0x8000
 
 By the end of the build process you will get **uImage** under *arch/arm/boot*.
 
 .. host::
 
- ~/Documents/linux-xlnx/arch/arm/boot/uImage
+ | ~/Documents/linux-xlnx/arch/arm/boot/uImage
 
 Enjoy!

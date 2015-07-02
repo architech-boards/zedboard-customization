@@ -13,13 +13,13 @@ ways to do that:
 
 .. host::
 
- | /path/to/build/tmp/work/zedboard_zynq7-poky-linux-gnueabi/u-boot-xlnx/v2013.01-xilinx+gitAUTOINC+20a6cdd301-r1/git
+ | /path/to/build/tmp/work/zedboard-poky-linux-gnueabi/u-boot-xlnx/v2014.01-xilinx+gitAUTOINC+2a0536fa48-r0/git
 
 this means that within the virtual machine you will find them under:
 
 .. host::
 
- | /home/@user@/architech_sdk/architech/@board-alias@/yocto/build/tmp/work/zedboard_zynq7-poky-linux-gnueabi/u-boot-xlnx/v2013.01-xilinx+gitAUTOINC+20a6cdd301-r1/git
+ | /home/architech/architech_sdk/architech/zedboard/yocto/build/tmp/work/zedboard-poky-linux-gnueabi/u-boot-xlnx/v2014.01-xilinx+gitAUTOINC+2a0536fa48-r0/git
 
 
 We suggest you to **don't work under Bitbake build directory**, you will pay a speed penalty
@@ -35,18 +35,8 @@ out the proper commit:
  | cd ~/Documents
  | git clone git://github.com/Xilinx/u-boot-xlnx.git
  | cd u-boot-xlnx
- | git checkout 20a6cdd301941b97961c9c5425b5fbb771321aac
+ | git checkout 2a0536fa48db1fc5332e3cd33b846d0da0c8bc1e
 
-and by properly patching the sources:
-
-.. host::
-
- | cd ~/Documents
- | git clone git://git.yoctoproject.org/meta-xilinx.git
- | cd meta-xilinx/
- | git checkout cb7329a596a5ab2d1392c1962f9975eeef8e4576
- | cd ..
- | patch -p1 -d u-boot-xlnx/ < meta-xilinx/recipes-bsp/u-boot/u-boot-xlnx/*
 
 Suppose you modified something and you want to recompile the sources to test your patches, well,
 you need a cross-toolchain (see :ref:`manual_compilation_label` Section). If you are not working
@@ -88,7 +78,7 @@ environment for you when you want to compile the bootloader or the kernel
 .. host::
 
  | source /home/@user@/architech_sdk/architech/@board-alias@/toolchain/environment-nofs
-
+ | export LDFLAGS="-L /home/@user@/architech_sdk/architech/@board-alias@/toolchain/sysroots/armv7a-vfp-neon-poky-linux-gnueabi/usr/lib/arm-poky-linux-gnueabi/4.9.1/"
 
 Ok, now you a have working environment to compile *u-boot*, just do:
 
@@ -97,7 +87,7 @@ Ok, now you a have working environment to compile *u-boot*, just do:
  | cd ~/Documents/u-boot-xlnx/
  | make mrproper
  | make zynq_zed_config
- | make [-j parallelism factor] all
+ | USE_PRIVATE_LIBGCC="yes" make [-j parallelism factor] all
 
 if you omit *-j* parameter, *make* will run one task after the other, if you specify it *make* will parallelize
 the tasks execution while respecting the dependencies between them.

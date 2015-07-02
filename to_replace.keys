@@ -8,7 +8,7 @@
 @board@;ZedBoard
 @meta-layer@;meta-xilinx
 @manifest-repository@;zedboard-manifest
-@machine-name@;zedboard-zynq7
+@machine-name@;zedboard
 @board-splashscreen@;zedboard-splashscreen
 @user@;architech
 @user-password@;architech
@@ -33,3 +33,4 @@
 @meta-layer-remote@;git://git.yoctoproject.org
 @add-ons@;
 @yocto-version@;dizzy
+@qt-version@;4.8.5
