@@ -22,6 +22,7 @@ Qt Creator
  | 
  | If the borad uses the touchscreen add the following line into the local.conf:
  | IMAGE_INSTALL_append = " tslib tslib-conf tslib-tests tslib-calibrate"
+ | Remove from the local.conf the recipe **bluez5**
 
 2. Deploy the :ref:`root file system <rootfs_label>` just generated on the final media used to boot the board
 
