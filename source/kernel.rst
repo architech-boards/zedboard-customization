@@ -42,7 +42,7 @@ and by properly patching the sources:
  | git checkout 7f759048bb0aeef3c0b3938be81d2bcade7acb7e
  | cd ..
  | git clone -b dizzy https://github.com/architech-boards/meta-zedboard.git
- | patch -p1 -d linux-xlnx/ < meta-xilix/recipes-kernel/linux/linux-xlnx/3.17/tty-xuartps-Fix-RX-hang-and-TX-corruption-in-set_termios.patch
+ | patch -p1 -d linux-xlnx/ < meta-xilinx/recipes-kernel/linux/linux-xlnx/3.17/tty-xuartps-Fix-RX-hang-and-TX-corruption-in-set_termios.patch
  | patch -p1 -d linux-xlnx/ < meta-zedboard/recipes-kernel/linux/linux-xlnx/3.17/0001-Updated-the-TI-Wilink8-driver-to-R8.5.patch
  | patch -p1 -d linux-xlnx/ < meta-zedboard/recipes-kernel/linux/linux-xlnx/3.17/0002-Patching-kernel-to-adapt-TI-Wilink8-driver.patch
  | patch -p1 -d linux-xlnx/ < meta-zedboard/recipes-kernel/linux/linux-xlnx/3.17/0003-Fixed-TI-Wilink8-driver-with-kernel-structure.patch
